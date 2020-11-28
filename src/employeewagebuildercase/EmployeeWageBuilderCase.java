@@ -62,6 +62,24 @@ public class EmployeeWageBuilderCase {
         empWage = empHrs * EMP_RATE_PER_HOUR;
         System.out.println("EMP WAGE: "+empWage);
         
+        
+        //uc4. calculating emp wage using switch case
+        switch(empCheck)
+        {
+            case 1:
+                //1 = FULL TIME
+                empHrs = 8;
+                break;
+            case 2: 
+                //2 = PART TIME
+                empHrs = 4;
+                break;
+            default:
+                empHrs = 0;
+        }
+        empWage = empHrs * EMP_RATE_PER_HOUR;
+        System.out.println("EMP WAGE: "+empWage);
+        
     }
     
 }
