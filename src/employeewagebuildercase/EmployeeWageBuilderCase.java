@@ -24,6 +24,7 @@ public class EmployeeWageBuilderCase {
         int totalWorkingDays = 0;
         int NUM_WORKING_DAYS = 2;
         int totalEmpWage = 0;
+        int totalEmpHrs = 0;
         int empCheck = (int) Math.floor(Math.random() * 10) % 3;
         
         int empHrs = 0;
@@ -106,6 +107,31 @@ public class EmployeeWageBuilderCase {
             System.out.println("EMP WAGE: "+empWage);
         }
         System.out.println("TOTAL EMP WAGE: "+totalEmpWage);
+        
+        
+        //uc6. Calculate Wages till a condition is met
+        while(totalEmpHrs <= NUM_WORKING_DAYS && totalWorkingDays <= NUM_WORKING_DAYS)
+        {
+            totalWorkingDays++;
+            int empCheck2 = (int) Math.floor(Math.random() * 10) % 3;
+            switch(empCheck2)
+            {
+                case 1:
+                    //1 = FULL TIME
+                    empHrs = 8;
+                    break;
+                case 2: 
+                    //2 = PART TIME
+                    empHrs = 4;
+                    break;
+                default:
+                    empHrs = 0;
+            }   
+            totalEmpHrs += empHrs;
+            System.out.println("Day#: "+totalWorkingDays +" Emp HR: "+empHrs);
+        }
+        totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+        System.out.println("TOTLA EMP WAGE: "+totalEmpWage);
         
     }
     
