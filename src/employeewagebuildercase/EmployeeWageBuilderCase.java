@@ -14,7 +14,7 @@ public class EmployeeWageBuilderCase {
     /**
      * @param args the command line arguments
      */
-    
+     
     //uc7 method code here
     public void ComputeWage()
     {
@@ -50,6 +50,36 @@ public class EmployeeWageBuilderCase {
             }
 	}
     }//uc7 end
+    
+    
+    //uc8 code
+    public static int computeEmpWage(String comany, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth)
+    {
+        int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+        while(totalEmpHrs <= maxHoursPerMonth && totalWorkingDays <= numOfWorkingDays)
+        {
+            totalWorkingDays++;
+            int empCheck = (int) Math.floor(Math.floor(Math.random() * 10) %3);
+            switch(empCheck)
+            {
+                case 1:
+                    //1 = FULL TIME
+                    empHrs = 8;
+                    break;
+                case 2: 
+                    //2 = PART TIME
+                    empHrs = 4;
+                 break;
+                default:
+                    empHrs = 0;
+            }
+            totalEmpHrs += empHrs;
+            System.out.println("Day# "+totalWorkingDays+" Emp Hr: "+empHrs);
+        }
+        int totalEmpWage = totalEmpHrs * empRatePerHr;
+        System.out.println("Total Emp Wage For Company: "+comany+" is: "+totalEmpWage);
+        return totalEmpWage;
+    }
     
     
     
@@ -176,6 +206,12 @@ public class EmployeeWageBuilderCase {
         //uc7. Refactor the Code to write a Class Method to Compute Employee Wage
         EmployeeWageBuilderCase obj1 = new EmployeeWageBuilderCase();
         obj1.ComputeWage();
+        
+        
+        //uc8. Ability to compute Employee Wage for multiple companies
+        computeEmpWage("Dmart", 20, 2, 10);
+        computeEmpWage("Relience", 10, 4, 20);
+        
         
     }
     
