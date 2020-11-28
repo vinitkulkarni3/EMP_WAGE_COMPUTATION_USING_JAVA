@@ -19,6 +19,7 @@ public class EmployeeWageBuilderCase {
         System.out.println("***** Welcome to Employee Wage Computation Program *****");
         
         int IS_FULL_TIME = 1;
+        int IS_PART_TIME = 2;
         int EMP_RATE_PER_HOUR = 20;
         int empCheck = (int) Math.floor(Math.random() * 10) % 3;
         
@@ -44,6 +45,19 @@ public class EmployeeWageBuilderCase {
         else 
         {
             empHrs = 0;
+	}
+        empWage = empHrs * EMP_RATE_PER_HOUR;
+        System.out.println("EMP WAGE: "+empWage);
+        
+        
+        //uc3. add part time employee
+        if(empCheck == IS_FULL_TIME) 
+        {
+            empHrs = 8;
+	}
+        else if(empCheck == IS_PART_TIME)
+        {
+            empHrs = 4;
 	}
         empWage = empHrs * EMP_RATE_PER_HOUR;
         System.out.println("EMP WAGE: "+empWage);
