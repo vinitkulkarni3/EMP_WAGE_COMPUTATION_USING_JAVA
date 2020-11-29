@@ -310,6 +310,7 @@ public class EmployeeWageBuilderCase implements IComputeEmpWage{
         relience.computeEmpWage1("Relience", 20, 2, 10);
         System.out.println("relience");
         
+        obj1.computeEmpWage();
     }
     
 }
