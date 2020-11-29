@@ -14,7 +14,22 @@ public class EmployeeWageBuilderCase {
     /**
      * @param args the command line arguments
      */
-     
+     private final String company;
+     private final int empRatePerHour;
+     private final int numOfWorkingDays;
+     private final int maxHoursPerMonth;
+    
+    //constructor start
+    public EmployeeWageBuilderCase(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
+    {
+        this.company = company;
+        this.empRatePerHour = empRatePerHour;
+        this.numOfWorkingDays = numOfWorkingDays;
+        this.maxHoursPerMonth = maxHoursPerMonth;
+    }
+    //constructor end
+    
+    
     //uc7 method code here
     public void ComputeWage()
     {
@@ -82,7 +97,46 @@ public class EmployeeWageBuilderCase {
     }
     
     
+    //uc9 start
+    int totalEmpWage = 0;
+    public void computeEmpWage1(String comany, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth)
+    {
+        int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+        while(totalEmpHrs <= maxHoursPerMonth && totalWorkingDays <= numOfWorkingDays)
+        {
+            totalWorkingDays++;
+            int empCheck = (int) Math.floor(Math.floor(Math.random() * 10) %3);
+            switch(empCheck)
+            {
+                case 1:
+                    //1 = FULL TIME
+                    empHrs = 8;
+                    break;
+                case 2: 
+                    //2 = PART TIME
+                    empHrs = 4;
+                 break;
+                default:
+                    empHrs = 0;
+            }
+            totalEmpHrs += empHrs;
+            System.out.println("Day# "+totalWorkingDays+" Emp Hr: "+empHrs);
+        }
+        totalEmpWage = totalEmpHrs * empRatePerHr;
+        System.out.println("Total Emp Wage For Company: "+comany+" is: "+totalEmpWage);
+        
+        
+    }
     
+    @Override
+    public String toString() 
+    {
+        return "Total Emp Wage for Company: "+company+" is "+totalEmpWage;
+    }
+    //uc9 end
+
+    
+
     public static void main(String[] args) {
         
         System.out.println("***** Welcome to Employee Wage Computation Program *****");
@@ -204,14 +258,20 @@ public class EmployeeWageBuilderCase {
         
         
         //uc7. Refactor the Code to write a Class Method to Compute Employee Wage
-        EmployeeWageBuilderCase obj1 = new EmployeeWageBuilderCase();
+        EmployeeWageBuilderCase obj1 = new EmployeeWageBuilderCase("Dmart",20,2,10);
         obj1.ComputeWage();
         
         
         //uc8. Ability to compute Employee Wage for multiple companies
-        computeEmpWage("Dmart", 20, 2, 10);
-        computeEmpWage("Relience", 10, 4, 20);
+        EmployeeWageBuilderCase more = new EmployeeWageBuilderCase("Moree",20,2,10);
+        EmployeeWageBuilderCase relience = new EmployeeWageBuilderCase("Relience",20,2,10);
         
+        
+        //uc9
+        more.computeEmpWage1("More", 20, 2, 10);
+        System.out.println("More");
+        relience.computeEmpWage1("Relience", 20, 2, 10);
+        System.out.println("relience");
         
     }
     
