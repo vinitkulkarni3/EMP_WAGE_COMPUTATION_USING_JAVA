@@ -5,11 +5,15 @@
  */
 package employeewagebuildercase;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+
 /**
  *
  * @author Vinit
  */
-public class EmployeeWageBuilderCase {
+public class EmployeeWageBuilderCase implements IComputeEmpWage{
 
     /**
      * @param args the command line arguments
@@ -29,6 +33,34 @@ public class EmployeeWageBuilderCase {
     }
     //constructor end
     
+    
+    public int numOfCompany = 0;
+    private LinkedList<CompanyEmpWage> companyEmpWageList;
+    private Map<String, CompanyEmpWage> companyEmpWageMap;
+
+    public EmployeeWageBuilderCase() 
+    {
+	companyEmpWageList = new LinkedList<CompanyEmpWage>();
+	companyEmpWageMap = new HashMap<String, CompanyEmpWage>();
+    }
+    
+    public void addCompanyEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) 
+    {
+        CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+	companyEmpWageList.add(companyEmpWage);
+	companyEmpWageMap.put(company, companyEmpWage);
+    }
+    
+    public void computeEmpWage() 
+    {
+        for (int i = 0; i < companyEmpWageList.size(); i++) 
+        {
+            CompanyEmpWage company = companyEmpWageList.get(i);
+            company.setTotalEmpWage(this.computeEmpWage(company));
+            System.out.println(company);
+	}
+    }
+
     
     //uc7 method code here
     public void ComputeWage()
@@ -135,8 +167,13 @@ public class EmployeeWageBuilderCase {
     }
     //uc9 end
 
-    
+    public void setTotalEmpWage(int totalEmpWage) {
+		this.totalEmpWage = totalEmpWage;
+	}
 
+    public int getTotalWage(String company){
+        return totalEmpWage;
+    }
     public static void main(String[] args) {
         
         System.out.println("***** Welcome to Employee Wage Computation Program *****");
