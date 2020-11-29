@@ -33,6 +33,22 @@ public class EmployeeWageBuilderCase implements IComputeEmpWage{
     }
     //constructor end
     
+    CompanyEmpWage companyEmpWage[];
+
+    public EmployeeWageBuilderCase() 
+    {
+        companyEmpWage = new CompanyEmpWage[5];
+    }
+    
+    private void computeEmpWage() 
+    {
+        for (int i = 0; i < numOfCompany; i++)
+        {
+            companyEmpWage[i].setTotalEmpWage(this.computeEmpWage(companyEmpWage[i]));
+            System.out.println(companyEmpWage[i]);
+	}
+    }
+    
     
     public int numOfCompany = 0;
     private LinkedList<CompanyEmpWage> companyEmpWageList;
