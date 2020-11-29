@@ -312,7 +312,9 @@ public class EmployeeWageBuilderCase implements IComputeEmpWage{
         
         //uc7. Refactor the Code to write a Class Method to Compute Employee Wage
         EmployeeWageBuilderCase obj1 = new EmployeeWageBuilderCase("Dmart",20,2,10);
+        EmployeeWageBuilderCase obj2 = new EmployeeWageBuilderCase("FreshMart",20,3,10);
         obj1.ComputeWage();
+        obj2.ComputeWage();
         
         
         //uc8. Ability to compute Employee Wage for multiple companies
